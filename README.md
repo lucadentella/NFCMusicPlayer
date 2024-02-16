@@ -11,6 +11,7 @@ Portable MP3 music player with NFC control
  - **SD card** reader
  - **Battery** powered with built-in **USB-C charger**
  - **Web based** configuration (map NFC tags to songs)
+ - **Arduino** based firmware
  - **3D printed** enclosure
 
 ## Documentation :notebook:
