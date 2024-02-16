@@ -22,7 +22,8 @@
 | BUTTON | SPST 16.3mm 2 Pin Round Switch  | [https://www.aliexpress.com/item/1005002032158386.html](https://www.aliexpress.com/item/1005005559022429.html)
 | POT | RK097N 10Kohm potentiometer  | [https://www.aliexpress.com/item/1005001417073667.html](https://www.aliexpress.com/item/1005001417073667.html)
 | SPEAKER | AIYIMA 2 Inch 4 Ohm 3W Full Range Speaker | [https://www.aliexpress.com/item/32593991938.html](https://www.aliexpress.com/item/32593991938.html)
-
+||||
+| CASE | 3D printed case | [https://www.thingiverse.com/](https://www.thingiverse.com/)
 | SCREW | M3 10mm | (n/a)
 
 NOTE: Links are provided for reference only: most of the items are available on different stores
