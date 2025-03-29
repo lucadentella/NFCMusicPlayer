@@ -27,5 +27,8 @@ Portable MP3 music player with NFC tags control
 - [KiCAD 8 files](https://github.com/lucadentella/NFCMusicPlayer/raw/main/board/)
 - [Project page for ready-made PCBs](https://www.pcbway.com/project/shareproject/SoundShield_a36724af.html)
  
+## :box: Case
+- ["Thing" on Thingiverse](https://www.thingiverse.com/thing:6994529)
+
  ## :floppy_disk: Firmware
  - [Arduino sketch](https://github.com/lucadentella/NFCMusicPlayer/tree/main/firmware/NFCMusicPlayer)
