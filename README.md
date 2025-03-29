@@ -15,8 +15,8 @@ Portable MP3 music player with NFC tags control
  - **3D printed** enclosure
 
 ## :movie_camera: Tutorial
-- [Youtube video - English](https://youtu.be/vOHDjR1nToo)
-- [Youtube video - Italiano](https://youtu.be/vOHDjR1nToo)
+- [Youtube video - English](https://youtu.be/ck0IdwVWIIs)
+- [Youtube video - Italiano](https://youtu.be/Wxny4k97sL8)
 
 ## :notebook: Documentation
  - [Part list](https://github.com/lucadentella/NFCMusicPlayer/tree/main/documentation/partlist.md)
