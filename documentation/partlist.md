@@ -10,7 +10,7 @@
 | C1 | Capacitor, Electrolytic 10uF 25V | (n/a)
 | C2 | Capacitor, Electrolytic 22uF 25V | (n/a)
 | D1, D2 | 5mm LED | (n/a)
-| RESET, BOOT | PCB switch | (n/a)
+| RESET, BOOT | 6x6 PCB switch | [https://www.aliexpress.com/item/32960657626.htm](https://www.aliexpress.com/item/32960657626.htm)
 | U1 | ESP32 WROOM-32E Module (4Mb) | [https://www.aliexpress.com/item/1005002032158386.html](https://www.aliexpress.com/item/1005002032158386.html)
 | U2 | MCP1826S Voltage Regulator | (n/a)
 ||||
