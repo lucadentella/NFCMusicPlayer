@@ -20,6 +20,7 @@ Portable MP3 music player with NFC tags control
 
 ## :notebook: Documentation
  - [Part list](https://github.com/lucadentella/NFCMusicPlayer/tree/main/documentation/partlist.md)
+ - [Some tips for building it](https://github.com/lucadentella/NFCMusicPlayer/tree/main/documentation/tips.md)
  - [Troubleshooting - Error codes](https://github.com/lucadentella/NFCMusicPlayer/tree/main/documentation/error-codes.md)
 
 ## :wrench: Board
