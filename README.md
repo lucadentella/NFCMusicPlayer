@@ -34,3 +34,12 @@ Portable MP3 music player with NFC tags control
 
  ## :floppy_disk: Firmware
  - [Arduino sketch](https://github.com/lucadentella/NFCMusicPlayer/tree/main/firmware/NFCMusicPlayer)
+ 
+**Required libraries**
+- [ESP32-audioI2S](https://github.com/schreibfaul1/ESP32-audioI2S) 2.0.0
+- [Adafruit_PN532](https://github.com/adafruit/Adafruit-PN532) 1.3.4
+- [Async TCP] (https://github.com/ESP32Async/AsyncTCP) 3.4.0
+- [ESP Async WebServer](https://github.com/ESP32Async/ESPAsyncWebServer) 3.7.7
+- [ArduinoJson](https://arduinojson.org/?utm_source=meta&utm_medium=library.properties) 7.4.1
+- [Arduino List](https://github.com/nkaaf/Arduino-List) 3.0.1
+
