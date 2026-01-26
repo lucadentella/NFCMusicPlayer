@@ -1,104 +1,60 @@
-/* Include the padding and border in an element's total width and height */
+/*
+ * NFC MusicPlayer - Tailwind CSS Dark Theme
+ * All styling is handled by Tailwind CSS utility classes
+ * This file is kept minimal for any custom overrides if needed
+ */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Ensure select dropdown has dark styling in all browsers */
+select option {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Firefox scrollbar */
 * {
-  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: #475569 #1e293b;
 }
 
-/* Style the header */
-.header {
-  background-color: #2E5266;
-  padding: 10px 10px;
-  color: white;
-  text-align: center;
-  font-family: "Verdana";
-}
-
-/* Style the section titles */
-.section {
-  padding: 10px 10px;
-  color: #2E5266;
-  font-family: "Verdana";
-}
-
-/* Remove margins and padding from the list */
-ul {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the list items */
-ul li {
+/* EQ Slider Styling */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 50%;
   cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  background: #eee;
-  font-family: "Verdana";
-  font-size: 14px;
-
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
-/* Set all odd list items to a different color (zebra-stripes) */
-ul li:nth-child(odd) {
-  background: #f9f9f9;
-}
-
-/* Darker background-color on hover */
-ul li:hover {
-  background: #CEEC97;
-}
-
-/* Style the close button */
-.close {
-  position: absolute;
-  right: 0;
-  top: 0;
-  padding: 12px 16px 12px 16px;
-}
-
-.close:hover {
-  background-color: #6F732F;
-  color: white;
-}
-
-/* Style the grid layout */
-.grid-container {
-  display: grid;
-  grid-template-columns: 10% auto;
-  row-gap: 10px;
-}
-
-/* Style the grid label */
-.grid-label {
-  font-family: "Verdana";
-  font-size: 14px;  
-}
-
-/* Style the tag-id input */
-.tag-id-input {
-  padding: 12px 20px 12px 20px;
-  font-family: "Verdana";
-  font-size: 14px;  
-}
-
-/* Style the select item */
-select {
-  padding: 12px 20px 12px 20px;
-  font-family: "Verdana";
-  font-size: 14px;  
-}
-
-/* Style the grid button */
-.grid-button {
-  padding: 8px 20px 8px 20px;
-  font-family: "Verdana";
-  font-size: 14px;
-  background-color: #CEEC97;
-}
-.grid-button:hover {
-  background-color: #6F732F;
-  color: white;
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: #3b82f6;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
 }

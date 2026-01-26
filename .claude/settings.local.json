@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pio run:*)",
+      "Bash(git ls-remote:*)",
+      "Bash(pio device monitor:*)"
+    ]
+  }
+}

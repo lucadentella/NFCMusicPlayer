@@ -4,50 +4,164 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="tailwind.css">
 <link rel="stylesheet" href="index.css">
 <script src="jquery.js"></script>
 <script src="index.js"></script>
 <title>NFC MusicPlayer</title>
-</head>	
+</head>
 
-<body> 
-  
-<div id="header-div" class="header">
-<h1>NFC MusicPlayer</h1>
-</div>
+<body class="bg-slate-900 min-h-screen">
 
-<div id="section-mapping-div" class="section">
-<h3>NFC Tags mapping</h3>
-</div>
+<!-- Toast Container -->
+<div id="toast-container" class="fixed top-4 right-4 z-50 space-y-2"></div>
 
-<ul id="myUL">
-</ul>
-
-<div id="section-mapping-div" class="section">
-<h3>Add new tag</h3>
+<!-- Header -->
+<div class="bg-gradient-to-r from-slate-800 to-slate-900 border-b border-slate-700 shadow-lg">
+  <div class="container mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold text-slate-100">NFC MusicPlayer</h1>
+    <p class="text-slate-400 text-sm mt-1">Manage your music and NFC tags</p>
+  </div>
 </div>
 
-<div class="grid-container">
-<div class="grid-item">
-<p class="grid-label">Tag ID: </p>
+<!-- Main Container -->
+<div class="container mx-auto px-4 py-6 max-w-7xl">
+
+  <!-- EQ Section -->
+  <div class="bg-slate-800 rounded-lg shadow-xl p-6 mb-6 border border-slate-700">
+    <h3 class="text-lg font-semibold text-slate-100 mb-4 flex items-center gap-2">
+      <span class="text-xl">🎚️</span> Equalizer
+    </h3>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <!-- Bass -->
+      <div class="text-center">
+        <label class="block text-slate-300 mb-2">Bass (500 Hz)</label>
+        <input type="range" id="eq-bass" min="-40" max="6" value="0"
+               class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+        <span id="eq-bass-value" class="text-slate-400 text-sm">0 dB</span>
+      </div>
+      <!-- Mid -->
+      <div class="text-center">
+        <label class="block text-slate-300 mb-2">Mid (3 kHz)</label>
+        <input type="range" id="eq-mid" min="-40" max="6" value="0"
+               class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+        <span id="eq-mid-value" class="text-slate-400 text-sm">0 dB</span>
+      </div>
+      <!-- Treble -->
+      <div class="text-center">
+        <label class="block text-slate-300 mb-2">Treble (6 kHz)</label>
+        <input type="range" id="eq-treble" min="-40" max="6" value="0"
+               class="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+        <span id="eq-treble-value" class="text-slate-400 text-sm">0 dB</span>
+      </div>
+    </div>
+    <div class="mt-4 flex justify-center gap-4">
+      <button id="eq-reset" class="px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 rounded-lg transition-colors">
+        Reset (Flat)
+      </button>
+    </div>
+  </div>
+
+  <!-- File Management Section -->
+  <div class="bg-slate-800 rounded-lg shadow-xl p-6 mb-6 border border-slate-700">
+    <h3 class="text-xl font-semibold text-slate-100 mb-4 flex items-center gap-2">
+      <span class="text-2xl">📁</span> File Management
+    </h3>
+
+    <!-- Upload Section -->
+    <div class="mb-6 p-6 bg-slate-900/50 rounded-lg border border-slate-700">
+      <h4 class="text-lg font-semibold text-slate-100 mb-4">Upload MP3 Files</h4>
+
+      <div class="border-2 border-dashed border-slate-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors bg-slate-800/50">
+        <input type="file" id="file-input" accept=".mp3,audio/mpeg" multiple class="hidden">
+        <label for="file-input" class="cursor-pointer block">
+          <div class="text-5xl mb-3">📁</div>
+          <p class="text-slate-300 mb-2 text-lg">Drag and drop files here or click to browse</p>
+          <p class="text-sm text-slate-500">MP3 files only</p>
+        </label>
+      </div>
+
+      <!-- Selected Files Display -->
+      <div id="selected-files" class="mt-3 hidden">
+        <p class="text-sm text-slate-400 mb-2">Selected files:</p>
+        <div id="selected-files-list" class="text-sm text-slate-300 space-y-1"></div>
+      </div>
+
+      <button
+        id="upload-button"
+        class="mt-4 px-6 py-2.5 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto"
+      >
+        Upload Files
+      </button>
+
+      <!-- Progress Bar -->
+      <div class="mt-4 hidden" id="upload-progress-container">
+        <div class="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-500 to-blue-600 h-3 rounded-full transition-all duration-300 shadow-lg shadow-blue-500/50" style="width: 0%" id="upload-progress-bar"></div>
+        </div>
+        <p class="text-sm text-slate-400 mt-2 text-center" id="upload-progress"></p>
+      </div>
+    </div>
+
+    <!-- Files Table -->
+    <div class="overflow-x-auto rounded-lg border border-slate-700">
+      <table class="w-full">
+        <thead class="bg-slate-700/50">
+          <tr>
+            <th class="px-4 py-3 text-center w-20">
+              <span class="text-slate-300 text-sm font-medium">Play</span>
+            </th>
+            <th class="px-4 py-3 text-left">
+              <button class="sortable flex items-center gap-2 hover:text-blue-400 transition-colors text-slate-300 text-sm font-medium w-full" data-sort="name">
+                <span>Filename</span>
+                <span class="text-xs">▲▼</span>
+              </button>
+            </th>
+            <th class="px-4 py-3 text-left hidden md:table-cell">
+              <button class="sortable flex items-center gap-2 hover:text-blue-400 transition-colors text-slate-300 text-sm font-medium w-full" data-sort="size">
+                <span>Size</span>
+                <span class="text-xs">▲▼</span>
+              </button>
+            </th>
+            <th class="px-4 py-3 text-left hidden lg:table-cell">
+              <button class="sortable flex items-center gap-2 hover:text-blue-400 transition-colors text-slate-300 text-sm font-medium w-full" data-sort="date">
+                <span>Upload Date</span>
+                <span class="text-xs">▲▼</span>
+              </button>
+            </th>
+            <th class="px-4 py-3 text-left">
+              <span class="text-slate-300 text-sm font-medium">NFC Tag</span>
+            </th>
+            <th class="px-4 py-3 text-center">
+              <span class="text-slate-300 text-sm font-medium">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="files-tbody" class="divide-y divide-slate-700">
+          <!-- Rows will be populated by JavaScript -->
+        </tbody>
+      </table>
+
+      <!-- Empty State -->
+      <div id="no-files" class="text-center py-12 text-slate-500 hidden bg-slate-900/30">
+        <div class="text-5xl mb-3">🎵</div>
+        <p class="text-lg">No files uploaded yet</p>
+        <p class="text-sm text-slate-600 mt-1">Upload some MP3 files to get started</p>
+      </div>
+    </div>
+  </div>
+
 </div>
-<div class="grid-item">
-<input type="text" id="tag-id" class="tag-id-input" disabled>
+
+<!-- Footer -->
+<div class="border-t border-slate-800 mt-12">
+  <div class="container mx-auto px-4 py-6">
+    <p class="text-center text-slate-600 text-sm">
+      NFC MusicPlayer &copy; 2024
+    </p>
+  </div>
 </div>
-<div class="grid-item">
-<p class="grid-label">Song: </p>
-</div>
-<div class="grid-item">
-<select name="songs" id="songs-select">
-</select>
-</div>
-<div class="grid-item">
-</div>
-<div class="grid-item">
-<button id="get-tag-id-button" class="grid-button">Get Tag ID</button>
-<button id="add-mapping-button" class="grid-button">Add mapping</button>
-</div>
-</div>
+
 </body>
 
 </html>
